@@ -77,7 +77,7 @@ client.on('message', message =>{
           // Get the log channel (change to your liking)
           const logChannel = member.guild.channels.cache.find(channel => channel.id === "695746619941060730");
           // A real basic message with the information we need. 
-          logChannel.send(`Welcome to the server Please read the rules and react to get in to the server ${inviter.username.mention}`)
+          logChannel.send(`Welcome to the server Please read the rules and react to get in to the server ${inviter.username}`)
           
 
           
