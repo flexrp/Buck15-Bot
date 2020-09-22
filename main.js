@@ -75,7 +75,7 @@ client.on('message', message =>{
           // This is just to simplify the message being sent below (inviter doesn't have a tag property)
           const inviter = client.users.cache.get(invite.inviter.id);
           // Get the log channel (change to your liking)
-          const logChannel = member.guild.channels.cache.find(channel => channel.id === "695746619941060730");
+          const logChannel = member.guild.channels.cache.find(channel => channel.name === "joins");
           // A real basic message with the information we need. 
           logChannel.send(`Welcome to the server Please read the rules and react to get in to the server ${inviter.username}`)
           
