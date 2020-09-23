@@ -2,6 +2,10 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
+client.on('ready' , ()=>{
+  console.log('Buck145 Test Bot is online')
+})
+
 const prefix  = '-'
 
 const fs = require('fs');
