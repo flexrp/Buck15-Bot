@@ -45,43 +45,11 @@ client.on('message', message =>{
 
     })
 
-    const invites = {};
-
-    // A pretty useful method to create a delay without blocking the whole script.
-    const wait = require('util').promisify(setTimeout);
-    
-    client.on('ready', async () => {
-      // "ready" isn't really ready. We need to wait a spell.
-      await wait(1000);
-    
-      // Load all invites for all guilds and save them to the cache.
-      client.guilds.cache.forEach(g => {
-        g.fetchInvites().then(guildInvites => {
-          invites[g.id] = guildInvites;
-        });
-      });
-    });
-
     client.on('guildMemberAdd', member => {
-        // To compare, we need to load the current invite list.
-        member.guild.fetchInvites().then(guildInvites => {
-          // This is the *existing* invites for the guild.
-          const ei = invites[member.guild.id];
-          // Update the cached invites for the guild.
-          invites[member.guild.id] = guildInvites;
-          // Look through the invites, find the one for which the uses went up.
-          const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
-          // This is just to simplify the message being sent below (inviter doesn't have a tag property)
-          const inviter = client.users.cache.get(invite.inviter.id);
-          // Get the log channel (change to your liking)
-          const logChannel = member.guild.channels.cache.find(channel => channel.name === "joins");
-          // A real basic message with the information we need. 
-          logChannel.send(`Welcome to the server Please read the rules and react to get in to the server ${inviter.username}`)
-          
-
-          
-        });
-      });
+      const channel = member.guild.channels.cache.find(ch => ch.name === 'joins');
+      if (!channel) return;
+      channel.send(`Welcome to the server React to the recation in , ${member}`);
+    });
 
 
       client.on('message', message => {
