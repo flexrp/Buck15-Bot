@@ -18,15 +18,9 @@ for(const file of commandFiles){
     client.commands.set(command.name , command)
 }
 
-
 client.on('ready' , ()=>{
-  console.log('Buck145 Test Bot is online')
+  console.log('Buck145 Bot is online')
 })
-
-
-
-
-
 
 client.on('message', message =>{
     if(!message.content.startsWith(prefix) || message.author.bot) return;
