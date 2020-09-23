@@ -2,9 +2,7 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
-client.on('ready' , ()=>{
-  console.log('Buck145 Test Bot is online')
-})
+
 
 const prefix  = '-'
 
@@ -21,6 +19,9 @@ for(const file of commandFiles){
 }
 
 
+client.on('ready' , ()=>{
+  console.log('Buck145 Test Bot is online')
+})
 
 
 
